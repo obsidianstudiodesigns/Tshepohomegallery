@@ -161,7 +161,8 @@ export function initGallery({ canvas, works, onStation, onReady, onLoadProgress,
   const info = gl.getExtension('WEBGL_debug_renderer_info');
   const gpu = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
   const integrated = lite || /intel|uhd|iris|hd graphics|mali|adreno|powervr|swiftshader|llvmpipe|microsoft basic/i.test(gpu);
-  let dpr = Math.min(devicePixelRatio, lite ? 1.25 : integrated ? 1 : 1.5);
+  // phones have ~2.5-3x screens; below ~1.25x the artwork turns visibly soft and blocky
+  let dpr = Math.min(devicePixelRatio, lite ? 1.75 : integrated ? 1 : 1.5);
   renderer.setPixelRatio(dpr);
   renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -498,7 +499,7 @@ export function initGallery({ canvas, works, onStation, onReady, onLoadProgress,
   const size = new THREE.Vector2(canvas.clientWidth, canvas.clientHeight);
   const rt = new THREE.WebGLRenderTarget(size.x * dpr, size.y * dpr, {
     type: THREE.HalfFloatType,
-    samples: lite ? 0 : integrated ? 2 : 4,
+    samples: integrated && !lite ? 2 : 4, // MSAA is nearly free on phones' tile-based GPUs
   });
   const composer = new EffectComposer(renderer, rt);
   composer.setPixelRatio(dpr);
@@ -591,7 +592,7 @@ export function initGallery({ canvas, works, onStation, onReady, onLoadProgress,
   /* loop ---------------------------------------------------------- */
   let running = true, lastStation = null;
   let idleFlip = false, slowTime = 0, sampleTime = 0;
-  const minDpr = lite ? 0.6 : 0.7;
+  const minDpr = lite ? 1.25 : 0.85; // never trade away so much resolution that the art blurs
   const clock = new THREE.Clock();
   const lookTgt = new THREE.Vector3();
 
@@ -664,11 +665,12 @@ export function initGallery({ canvas, works, onStation, onReady, onLoadProgress,
 
   // adaptive resolution: if frames run long while walking, step the pixel ratio down
   function adaptQuality(dt, moving) {
-    if (!moving || lightsStart < 0) return;
+    // ignore the first seconds after load, when one-off work makes any device look slow
+    if (!moving || lightsStart < 0 || performance.now() - lightsStart < 2500) return;
     sampleTime += dt;
-    if (dt > 1 / 45) slowTime += dt;
-    if (sampleTime < 1.2) return;
-    if (slowTime / sampleTime > 0.4) stepDown();
+    if (dt > 1 / 40) slowTime += dt;
+    if (sampleTime < 2) return;
+    if (slowTime / sampleTime > 0.6) stepDown();
     sampleTime = slowTime = 0;
   }
 
@@ -683,7 +685,7 @@ export function initGallery({ canvas, works, onStation, onReady, onLoadProgress,
       return;
     }
     if (dpr > minDpr) {
-      dpr = Math.max(minDpr, +(dpr - 0.2).toFixed(2));
+      dpr = Math.max(minDpr, +(dpr - 0.25).toFixed(2));
       renderer.setPixelRatio(dpr);
       composer.setPixelRatio(dpr);
       resize();
