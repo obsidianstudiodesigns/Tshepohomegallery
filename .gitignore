@@ -1,0 +1,7 @@
+# raw client photos (cropped copies live in site/assets)
+/Gallery *.jpg
+# local tooling
+/.claude/
+__pycache__/
+.DS_Store
+Thumbs.db

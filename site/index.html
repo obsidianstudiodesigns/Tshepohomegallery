@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tshepo HOME Gallery | Paintings, murals and portraits</title>
+<meta name="description" content="Professional gallery artist creating art to nourish the soul. Paintings on walls, cars, clothes and canvas, and hand-drawn portraits from your photos. Walk the gallery in 3D.">
+<link rel="canonical" href="https://obsidianstudiodesigns.github.io/Tshepohomegallery/">
+<meta name="theme-color" content="#17191b">
+
+<!-- icons -->
+<link rel="icon" type="image/png" sizes="48x48" href="assets/social/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/social/icon-192.png">
+<link rel="apple-touch-icon" href="assets/social/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- link previews (WhatsApp, Facebook, iMessage, LinkedIn read Open Graph; X reads Twitter cards) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tshepo HOME Gallery">
+<meta property="og:locale" content="en_ZA">
+<meta property="og:url" content="https://obsidianstudiodesigns.github.io/Tshepohomegallery/">
+<meta property="og:title" content="Tshepo HOME Gallery">
+<meta property="og:description" content="Creating art to nourish the soul. Paintings on walls, cars, clothes and canvas, and portraits drawn from your photos. Walk the gallery in 3D.">
+<meta property="og:image" content="https://obsidianstudiodesigns.github.io/Tshepohomegallery/assets/social/og-image.jpg">
+<meta property="og:image:secure_url" content="https://obsidianstudiodesigns.github.io/Tshepohomegallery/assets/social/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A spotlit 3D gallery wall hung with Tshepo's colourful primate painting and framed drawings">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tshepo HOME Gallery">
+<meta name="twitter:description" content="Creating art to nourish the soul. Paintings on walls, cars, clothes and canvas.">
+<meta name="twitter:image" content="https://obsidianstudiodesigns.github.io/Tshepohomegallery/assets/social/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ArtGallery",
+  "name": "Tshepo HOME Gallery",
+  "description": "Professional gallery artist creating art to nourish the soul. Paintings on walls, cars, clothes and canvas, and portraits drawn from photos.",
+  "url": "https://obsidianstudiodesigns.github.io/Tshepohomegallery/",
+  "image": "https://obsidianstudiodesigns.github.io/Tshepohomegallery/assets/social/og-image.jpg",
+  "logo": "https://obsidianstudiodesigns.github.io/Tshepohomegallery/assets/social/icon-512.png",
+  "telephone": "+27612568194",
+  "email": "tshepomahlangu5@gmail.com",
+  "founder": { "@type": "Person", "name": "Tshepo Mahlangu" },
+  "sameAs": ["https://www.facebook.com/tshepohomegallery/", "https://www.instagram.com/tshepohomegallery/"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<a class="skip" href="#collection">Skip to the collection</a>
+
+<header class="bar" id="top">
+  <a class="mark" href="#top" aria-label="Tshepo HOME Gallery, back to top">THG</a>
+  <nav aria-label="Main">
+    <a href="#surfaces">Surfaces</a>
+    <a href="#portraits">Portraits</a>
+    <a href="#collection">Collection</a>
+    <a class="bar-cta" href="#commission">Commission a piece</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 1. The gallery walk -->
+  <section class="walk" id="walk" aria-label="Virtual gallery walk">
+    <div class="stage">
+      <canvas id="gallery" aria-hidden="true"></canvas>
+      <img class="stage-fallback" src="assets/works/primate-in-colour.jpg" alt="" hidden>
+
+      <div class="intro" id="intro">
+        <h1 class="name" aria-label="Tshepo HOME Gallery">
+          <span class="name-line">Tshepo</span>
+          <span class="name-line">HOME Gallery</span>
+          <svg class="drips" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
+            <path class="drip d1" d="M74 0 h9 v58 c0 4.800000000000001 1.5 7.199999999999999 1.5 12.0 a6.0 6.0 0 0 1 -12 0 c0 -4.800000000000001 1.5 -7.199999999999999 1.5 -12.0 z"/>
+            <path class="drip d2" d="M212 0 h6 v26 c0 3.6 1.5 5.3999999999999995 1.5 9.0 a4.5 4.5 0 0 1 -9 0 c0 -3.6 1.5 -5.3999999999999995 1.5 -9.0 z"/>
+            <path class="drip d3" d="M341 0 h8 v82 c0 4.4 1.5 6.6 1.5 11.0 a5.5 5.5 0 0 1 -11 0 c0 -4.4 1.5 -6.6 1.5 -11.0 z"/>
+            <path class="drip d1" d="M468 0 h6 v40 c0 3.6 1.5 5.3999999999999995 1.5 9.0 a4.5 4.5 0 0 1 -9 0 c0 -3.6 1.5 -5.3999999999999995 1.5 -9.0 z"/>
+            <path class="drip d2" d="M546 0 h7 v64 c0 4.0 1.5 6.0 1.5 10.0 a5.0 5.0 0 0 1 -10 0 c0 -4.0 1.5 -6.0 1.5 -10.0 z"/>
+          </svg>
+        </h1>
+        <p class="lede">Professional gallery artist. Creating art to nourish the soul, on walls, cars, clothes and canvas.</p>
+        <p class="cue"><span class="cue-line" aria-hidden="true"></span>Scroll to walk the gallery</p>
+      </div>
+
+      <div class="label" id="label" aria-live="polite">
+        <p class="label-title" id="label-title"></p>
+        <p class="label-medium" id="label-medium"></p>
+        <a class="label-ask" id="label-ask" href="#commission">Ask about this piece</a>
+      </div>
+
+      <div class="walk-end" id="walk-end">
+        <p class="walk-end-line">That's the wall.<br>Yours could be next.</p>
+        <a class="btn btn-paint" href="#commission">Commission a piece</a>
+      </div>
+
+      <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+      <p class="loading" id="loading">Hanging the work<span id="loading-pct"></span></p>
+    </div>
+  </section>
+
+  <!-- paint drip seam -->
+  <svg class="seam" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#17191b" d="M0 0h1440v22c-30 0-34 40-46 40s-14-40-40-40H1180c-18 0-20 58-34 58s-14-58-30-58H902c-22 0-22 30-36 30s-12-30-32-30H560c-16 0-18 64-32 64s-16-64-34-64H262c-20 0-20 36-34 36s-16-36-34-36H0z"/>
+    <path fill="#2257d6" d="M1146 22c0 0 4 52-10 66-6-10-4-48-4-66z" opacity=".95"/>
+    <path fill="#d3263a" d="M528 22c0 0 6 50-6 62-8-12-6-46-6-62z"/>
+    <path fill="#f2be22" d="M866 22c0 0 4 24-6 30-6-6-4-22-4-30z"/>
+  </svg>
+
+  <!-- 2. Surfaces -->
+  <section class="surfaces" id="surfaces" aria-labelledby="surfaces-h">
+    <div class="wrap surfaces-grid">
+      <div>
+        <h2 id="surfaces-h" class="h2">If it holds paint, I can paint it.</h2>
+        <p class="body">Walls at home or at work, a car panel, a jacket, or a stretched canvas for over the couch. Tell me the surface and the feeling you want, and I'll sketch the idea first.</p>
+        <ul class="surface-list" role="list">
+          <li><button class="surface" data-img="assets/photos/mural.jpg" data-alt="A wildlife mural of parrots, toucans and butterflies painted along an outside wall" aria-pressed="true">Walls</button></li>
+          <li><button class="surface" data-img="assets/works/red-forest-falls.jpg" data-alt="Acrylic painting of red-leaved trees above a waterfall" aria-pressed="false">Canvas</button></li>
+          <li><button class="surface" data-note="Send a photo of the car and the panel you want painted. I'll draw the design over it before a drop of paint goes on." aria-pressed="false">Cars</button></li>
+          <li><button class="surface" data-note="Jackets, sneakers, tees. Bring the piece, pick a style from the collection, and I'll hand-paint it to last." aria-pressed="false">Clothes</button></li>
+        </ul>
+      </div>
+      <figure class="surface-view">
+        <img id="surface-img" src="assets/photos/mural.jpg" alt="A wildlife mural of parrots, toucans and butterflies painted along an outside wall" loading="lazy">
+        <figcaption id="surface-note" class="surface-note" hidden></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3. Portraits -->
+  <section class="portraits" id="portraits" aria-labelledby="portraits-h">
+    <div class="wrap">
+      <h2 id="portraits-h" class="h2">Portraits drawn from your photos.</h2>
+      <p class="body">Couples, graduates, parents, the dog who runs the house. Graphite and charcoal on paper, worked by hand from the photo you send.</p>
+      <ol class="steps" role="list">
+        <li class="step">
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>Send a photo</h3>
+          <p>WhatsApp a clear picture and tell me the size you want. A4 and A3 are the usual.</p>
+        </li>
+        <li class="step">
+          <img src="assets/photos/in-progress.jpg" alt="A graphite portrait half finished on the drawing desk, with the reference photo open on a laptop behind it" loading="lazy">
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>I draw it by hand</h3>
+          <p>Faces first, then fabric, hair and shadow. You get progress pictures along the way.</p>
+        </li>
+        <li class="step">
+          <img src="assets/photos/framed-portrait.jpg" alt="A finished graphite portrait of a woman in a striped shirt, framed in grey wood on a dresser" loading="lazy">
+          <span class="step-n" aria-hidden="true">3</span>
+          <h3>Framed and ready</h3>
+          <p>Signed THG, framed if you like, and ready for the wall or for gifting.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. Collection -->
+  <section class="collection" id="collection" aria-labelledby="collection-h">
+    <div class="wrap">
+      <div class="collection-head">
+        <h2 id="collection-h" class="h2">The collection</h2>
+        <div class="filters" role="group" aria-label="Filter the collection">
+          <button class="filter" data-filter="all" aria-pressed="true">All work</button>
+          <button class="filter" data-filter="paint" aria-pressed="false">Paint</button>
+          <button class="filter" data-filter="drawing" aria-pressed="false">Pencil and charcoal</button>
+        </div>
+      </div>
+      <ul class="works" id="works" role="list"></ul>
+    </div>
+  </section>
+
+  <!-- 5. At home -->
+  <section class="home" aria-labelledby="home-h">
+    <figure class="home-fig">
+      <img src="assets/photos/interior.jpg" alt="The colourful primate painting hanging on a dark slate wall in a modern kitchen" loading="lazy">
+    </figure>
+    <div class="home-copy">
+      <h2 id="home-h" class="visually-hidden">Art at home</h2>
+      <blockquote>
+        <p>Painting is not easy, but simple if you love it.</p>
+        <footer>Tshepo, THG</footer>
+      </blockquote>
+      <p class="body">The primate, at home on a slate kitchen wall. Big work changes a room. I'll help you pick the size and the spot.</p>
+    </div>
+  </section>
+
+  <!-- 6. Commission -->
+  <section class="commission" id="commission" aria-labelledby="commission-h">
+    <div class="wrap commission-grid">
+      <div>
+        <h2 id="commission-h" class="h2">Commission a piece</h2>
+        <p class="body">Tell me what you have in mind. It goes straight to my WhatsApp and I'll reply with ideas and a price.</p>
+        <ul class="contact" role="list">
+          <li><a href="https://wa.me/27612568194">WhatsApp 061 256 8194</a></li>
+          <li><a href="tel:+27612568194">Call 061 256 8194</a></li>
+          <li><a href="mailto:tshepomahlangu5@gmail.com">tshepomahlangu5@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/tshepohomegallery/" rel="noopener" target="_blank">Instagram @tshepohomegallery</a></li>
+          <li><a href="https://www.facebook.com/tshepohomegallery/" rel="noopener" target="_blank">Facebook, Tshepo HOME Gallery</a></li>
+        </ul>
+      </div>
+      <form class="brief" id="brief" novalidate>
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" autocomplete="name" required>
+        <label for="f-surface">What should I paint on?</label>
+        <select id="f-surface" name="surface">
+          <option>Canvas</option>
+          <option>A portrait from a photo</option>
+          <option>A wall or mural</option>
+          <option>A car</option>
+          <option>Clothes</option>
+          <option>Not sure yet</option>
+        </select>
+        <label for="f-msg">The idea</label>
+        <textarea id="f-msg" name="msg" rows="4" placeholder="Size, colours, where it will hang, who it's for"></textarea>
+        <p class="form-error" id="form-error" role="alert" hidden>Add your name so I know who I'm replying to.</p>
+        <button class="btn btn-paint" type="submit">Send on WhatsApp</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <span class="mark mark-lg" aria-hidden="true">THG</span>
+    <p>Tshepo HOME Gallery. Creating art to nourish the soul.</p>
+    <p>© <span id="year"></span> Tshepo Mahlangu</p>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Artwork viewer">
+  <button class="lb-close" id="lb-close" aria-label="Close viewer">Close</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous work">‹</button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption><strong id="lb-title"></strong><span id="lb-medium"></span></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next work">›</button>
+</dialog>
+
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js">
+<link rel="modulepreload" href="gallery3d.js">
+<script type="module" src="main.js"></script>
+</body>
+</html>
